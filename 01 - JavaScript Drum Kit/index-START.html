@@ -80,6 +80,16 @@ audio.play();
 //Add the playing class to achieve the desired styling effect
 key.classList.add('playing');
 
+//A function to remove the styling effect
+function removeTransition(e) {
+  if (e.propertyName !== 'transform') return;
+  this.classList.remove('playing');
+ }
+
+//Create a query that listens for the transition end for all associated keys
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
  })
 
 </script>
