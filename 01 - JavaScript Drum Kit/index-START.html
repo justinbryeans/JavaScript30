@@ -60,8 +60,11 @@
 <script>
 
 //Listen for keys being pressed
- window.addEventListener('keydown', function(e) {
- console.log(e.keyCode);
+window.addEventListener('keydown', function(e) {
+
+//Create a query to see if there is an audio file that corresponds with the key that is pressed
+const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+console.log(audio);
  })
 
 </script>
