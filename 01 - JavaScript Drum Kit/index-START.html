@@ -68,6 +68,9 @@ const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
 //Create a query to see if there is a key class associated with the key that is pressed
 const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
 
+//If a key does not have a corresponding audio file stop running
+if(!audio) return;
+
 //Rewind the audio file to the beginning each time the key is pressed
 audio.currentTime = 0;
 
