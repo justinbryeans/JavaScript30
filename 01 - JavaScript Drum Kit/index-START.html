@@ -59,6 +59,29 @@
 
 <script>
 
+//A function to play the appropriate sound for the key that is pressed
+function playSound(e) {
+  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  if (!audio) return;
+  audio.currentTime = 0;
+  audio.play();
+  key.classList.add('playing');
+}
+
+//A function to remove the styling effect that was applied when the key was pressed
+function removeTransition(e) {
+  if (e.propertyName !== 'transform') return;
+  this.classList.remove('playing');
+ }
+
+//Create a query that listens for the transition end for all associated keys
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+//Listen for keys being pressed
+window.addEventListener('keydown', playSound);
+
 </script>
 
 
